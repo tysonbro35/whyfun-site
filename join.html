@@ -35,6 +35,8 @@
   .done .h2 { font-size:clamp(2rem, 1rem + 2.6vw, 3.4rem); }
   .form.off { display:none; }
   .join .eyebrow { justify-content:center; }
+  /* honeypot: off screen, never filled by people */
+  .hp { position:absolute; left:-9999px; width:1px; height:1px; overflow:hidden; }
   @media (prefers-reduced-motion:reduce){ .form input { transition:none; } }
 </style>
 </head>
@@ -67,6 +69,7 @@
       <label>Name <input name="name" type="text" autocomplete="name" required></label>
       <label>Email <input name="email" type="email" autocomplete="email" inputmode="email" required></label>
       <label>Phone <input name="phone" type="tel" autocomplete="tel" inputmode="tel" required></label>
+      <label class="hp" aria-hidden="true">Company <input name="company" type="text" tabindex="-1" autocomplete="off"></label>
       <div class="act">
         <button class="cta cta--lg cta--orange" type="submit">Join the waitlist <span class="cta__i" aria-hidden="true">↗</span></button>
       </div>
@@ -87,10 +90,11 @@
 
 <script>
 (function () {
-  /* Where submissions go. Paste the form service endpoint here (Formspree,
-     Web3Forms, Basin, or our own function) and the form is live. Until then
-     it says so, rather than pretending. */
-  var ENDPOINT = "";
+  /* Submissions go to our own function (api/join.js), which forwards them
+     to the GoHighLevel inbound webhook set in Vercel's GHL_WEBHOOK_URL. Until
+     that variable exists the function answers 503 and the form says so,
+     rather than pretending. */
+  var ENDPOINT = "/api/join";
 
   addEventListener("load", function () { requestAnimationFrame(function () { document.body.classList.add("ready"); }); });
   setTimeout(function () { document.body.classList.add("ready"); }, 900);
@@ -110,11 +114,18 @@
     e.preventDefault();
     var bad = fields.filter(function (el) { return !valid(el); });
     if (bad.length) { msg.textContent = "Please check the highlighted field" + (bad.length > 1 ? "s." : "."); bad[0].focus(); return; }
-    if (!ENDPOINT) { msg.textContent = "This form is not connected yet."; return; }
     var btn = form.querySelector("button"); btn.disabled = true; msg.textContent = "Sending…";
-    fetch(ENDPOINT, { method: "POST", headers: { Accept: "application/json" }, body: new FormData(form) })
-      .then(function (r) { if (!r.ok) throw new Error(r.status); form.classList.add("off"); done.classList.add("on"); })
-      .catch(function () { btn.disabled = false; msg.textContent = "That did not go through. Please try again."; });
+    var data = { name: fields[0].value, email: fields[1].value, phone: fields[2].value, company: form.elements.company.value };
+    fetch(ENDPOINT, { method: "POST", headers: { "Content-Type": "application/json", Accept: "application/json" }, body: JSON.stringify(data) })
+      .then(function (r) {
+        if (r.status === 503) throw new Error("nc");
+        if (!r.ok) throw new Error(String(r.status));
+        form.classList.add("off"); done.classList.add("on");
+      })
+      .catch(function (e) {
+        btn.disabled = false;
+        msg.textContent = e.message === "nc" ? "This form is not connected yet." : "That did not go through. Please try again.";
+      });
   });
 })();
 </script>
