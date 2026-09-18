@@ -20,82 +20,8 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="site.css">
 <style>
-  :root {
-    --cream:#FDFBF7;
-    --ink:#171310;
-    --soft:#6F6459;
-    --hair:rgba(23,19,16,.10);
-    --orange:#FF6B00;
-    --orange-type:#E15E00;
-    --orange-ink:#8A3900;
-    --red:#DD1E33; --gold:#FFC928; --blue:#1F74DD;
-    --serif:"Instrument Serif", Georgia, serif;
-    --sans:"Plus Jakarta Sans", system-ui, sans-serif;
-    --ease:cubic-bezier(0.32,0.72,0,1);
-  }
-  * { box-sizing:border-box; }
-  html,body { margin:0; }
-  body { background:var(--cream); color:var(--ink); font-family:var(--sans); -webkit-font-smoothing:antialiased; }
-  ::selection { background:rgba(255,107,0,.2); }
-
-  .grain {
-    position:fixed; inset:0; z-index:60; pointer-events:none; opacity:.03;
-    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)'/%3E%3C/svg%3E");
-  }
-
-  h1,h2,h3 { margin:0; font-family:var(--serif); font-weight:400; letter-spacing:-.02em; line-height:1.02; }
-  .h2 { font-size:clamp(2.3rem, 0.9rem + 3.8vw, 5rem); }
-  p { margin:0; }
-  .lede { font-size:clamp(1.05rem, 0.95rem + 0.45vw, 1.4rem); line-height:1.58; color:var(--soft); }
-  .wrap { width:min(1240px, calc(100% - 40px)); margin-inline:auto; }
-  .narrow { width:min(760px, calc(100% - 40px)); margin-inline:auto; }
-  .center { text-align:center; }
-
-  .eyebrow {
-    position:relative; z-index:8;
-    display:flex; align-items:center; justify-content:center; gap:20px;
-    font:600 10.5px/1 var(--sans); letter-spacing:.24em; text-transform:uppercase; color:var(--soft);
-  }
-  .eyebrow::before, .eyebrow::after {
-    content:""; height:1px; width:clamp(40px, 7vw, 110px);
-    background:linear-gradient(to right, transparent, var(--hair), transparent);
-  }
-
-  .cta {
-    display:inline-flex; align-items:center; gap:13px;
-    background:var(--ink); color:#fff; text-decoration:none;
-    font:600 14px/1 var(--sans); padding:7px 7px 7px 21px; border-radius:999px;
-    transition:transform .3s var(--ease), box-shadow .3s var(--ease);
-    box-shadow:0 1px 2px rgba(23,19,16,.14), 0 14px 30px -16px rgba(23,19,16,.55);
-    border:0; cursor:pointer;
-  }
-  .cta__i {
-    width:31px; height:31px; border-radius:999px; background:rgba(255,255,255,.15);
-    display:grid; place-items:center; font-size:12px; line-height:1;
-    transition:transform .3s var(--ease), background .3s var(--ease);
-  }
-  .cta:hover { transform:translateY(-1px); }
-  .cta:hover .cta__i { transform:translate(2px,-2px) scale(1.06); background:rgba(255,255,255,.24); }
-  .cta:active { transform:scale(.985); }
-  .cta:focus-visible { outline:3px solid var(--orange-ink); outline-offset:3px; }
-  .cta--orange { background:var(--orange); box-shadow:0 1px 2px rgba(150,64,0,.2), 0 18px 36px -16px rgba(255,107,0,.66); }
-  .cta--lg { font-size:15.5px; padding:9px 9px 9px 27px; }
-  .cta--lg .cta__i { width:38px; height:38px; font-size:13px; }
-
-  .nav {
-    position:fixed; z-index:50; top:0; left:0; right:0;
-    display:grid; grid-template-columns:1fr auto 1fr; align-items:center;
-    padding:22px clamp(20px, 3.6vw, 54px);
-    background:linear-gradient(to bottom, var(--cream) 42%, rgba(253,251,247,0));
-  }
-  .brand { display:flex; align-items:center; justify-self:start; text-decoration:none; }
-  .brand svg { height:24px; width:auto; display:block; }
-  .navlinks { display:flex; align-items:center; gap:clamp(20px, 2.6vw, 38px); justify-self:center; }
-  .navlinks a { font:500 14.5px/1 var(--sans); color:var(--soft); text-decoration:none; transition:color .2s var(--ease); }
-  .navlinks a:hover { color:var(--ink); }
-  .navend { justify-self:end; }
-  @media (max-width:900px){ .navlinks { display:none; } }
 
   /* -------------------------------------------------------------- hero */
   .hero { position:relative; min-height:100dvh; display:grid; place-items:center; overflow:hidden; padding:88px 20px 40px; }
@@ -129,9 +55,6 @@
   .pstep i { width:20px; height:20px; border-radius:50%; flex:none; display:block; }
   .pstep b { font-family:var(--serif); font-weight:400; font-size:1.25rem; }
   .pstep span { color:var(--soft); }
-  .foot { padding:56px 0 72px; text-align:center; font:500 13.5px/1.6 var(--sans); color:var(--soft); }
-  .foot a { color:var(--soft); text-underline-offset:4px; }
-  .foot a:hover { color:var(--ink); }
 
   .bezel { padding:10px; border-radius:30px; background:rgba(23,19,16,.035); box-shadow:inset 0 0 0 1px rgba(23,19,16,.06); }
   .bezel__in {
@@ -197,7 +120,7 @@
     <a href="#pressure">How it works</a><a href="#signals">The signals</a><a href="#stories">Stories</a><a href="#try">Try it</a>
   </span>
   <span class="navend fade" style="--d:.25s">
-    <a class="cta" href="#carry">Carry the signal <span class="cta__i" aria-hidden="true">↗</span></a>
+    <a class="cta" href="join.html">Carry the signal <span class="cta__i" aria-hidden="true">↗</span></a>
   </span>
 </nav>
 
@@ -220,7 +143,7 @@
         </h1>
         <p class="sub fade" style="--d:1.75s">Simple tools for staying human when things get hard.</p>
         <div class="act fade" style="--d:1.95s">
-          <a class="cta cta--lg cta--orange" href="#carry">Carry the signal <span class="cta__i" aria-hidden="true">↗</span></a>
+          <a class="cta cta--lg cta--orange" href="join.html">Carry the signal <span class="cta__i" aria-hidden="true">↗</span></a>
         </div>
         <div class="signals fade" style="--d:2.15s">
           <i style="background:var(--red)"></i><i style="background:var(--gold)"></i><i style="background:var(--blue)"></i>
@@ -262,10 +185,10 @@
 
 <section class="scene scene--full" data-scene data-len="640" id="pressure">
   <div class="scene__pin"><div class="scene__inner">
-    <div class="cam" id="lcam">
+    <div class="cam" id="lcam" data-shift="0.06" data-over="1.15">
       <div class="cam__world" id="lworld">
-        <video class="cam__clip" id="clip" muted playsinline preload="auto" width="1920" height="1080"
-               aria-label="Two cars approaching the same intersection with no signal between them."></video>
+        <canvas class="cam__clip" id="clip" width="1280" height="710" role="img"
+                aria-label="Two cars, both stopped, then both moving into the same intersection with no signal between them."></canvas>
         <div class="cam__fade" aria-hidden="true"></div>
         <!-- the traffic light, cut out of its own sky and hung over the
              intersection. it is the signal the scene is about to lose. -->
@@ -293,7 +216,7 @@
 <!-- ====================================== THE TURN: camera pull-back -->
 <section class="scene scene--full" data-scene data-len="520" id="turn">
   <div class="scene__pin"><div class="scene__inner">
-    <div class="cam" id="cam">
+    <div class="cam" id="cam" data-shift="0.20" data-over="1.35">
       <div class="cam__world" id="world">
         <img class="cam__photo" src="assets/hero-clean.webp" width="1920" height="1080"
              alt="Darren Nielson laughing with two guests at FUNFest.">
@@ -400,7 +323,7 @@
 <!-- ============================================= THE MAP: a drawn vision -->
 <section class="scene scene--full" data-scene data-len="400" id="map">
   <div class="scene__pin"><div class="scene__inner">
-    <div class="cam" id="mcam">
+    <div class="cam" id="mcam" data-shift="0.02" data-over="1.7">
       <div class="cam__world" id="mworld">
         <div class="globe">
           <picture>
@@ -478,14 +401,9 @@
     <h2 class="h2" style="margin-top:26px">Wear it, draw it,<br>or just remember it.</h2>
     <p class="lede" style="margin:26px auto 0; max-width:42ch">It does not prove anything about you. It only says what you intend.</p>
     <div class="act" style="margin-top:36px">
-      <button class="cta cta--lg cta--orange" type="button" id="keep" aria-controls="practice" aria-expanded="false">Carry the signal <span class="cta__i" aria-hidden="true">↗</span></button>
+      <a class="cta cta--lg cta--orange" href="join.html">Carry the signal <span class="cta__i" aria-hidden="true">↗</span></a>
     </div>
     <p class="quietlink"><a href="#" id="donate">or support FUN directly</a></p>
-    <div class="practice" id="practice" hidden>
-      <div class="pstep"><i style="background:var(--red)"></i><span><b>Pause.</b> One breath, before you answer.</span></div>
-      <div class="pstep"><i style="background:var(--gold)"></i><span><b>Reflect.</b> What else could this mean?</span></div>
-      <div class="pstep"><i style="background:var(--blue)"></i><span><b>Retry.</b> Say it again, better.</span></div>
-    </div>
   </div>
   <footer class="foot">
     <p>FUN NGO Inc. · <a href="legal/privacy.html">Privacy</a> · <a href="legal/terms.html">Terms</a> · <a href="legal/accessibility.html">Accessibility</a></p>
@@ -516,14 +434,40 @@
     };
   });
 
-  /* the pressure clip is scrubbed by its own scene */
+  /* The pressure clip is a frame sequence drawn to a canvas. It scrubs the
+     same on every device, phones included, and never waits on a video seek.
+     Frame 1 loads at once, so the stopped cars are there before the scene;
+     the rest load as the scene comes into reach. */
   var clip = document.getElementById("clip");
   var clipScene = document.getElementById("pressure");
-  var clipReady = false, haveT = 0;
-  if (clip) {
-    clip.src = matchMedia("(max-width: 760px)").matches ? "assets/pressure-m.mp4" : "assets/pressure.mp4";
-    clip.addEventListener("loadedmetadata", function () { clipReady = true; try { clip.currentTime = 0.001; } catch (e) {} });
+  var ctx2d = clip && clip.getContext && clip.getContext("2d");
+  var narrowScreen = matchMedia("(max-width: 760px)").matches;
+  var FR = { dir: narrowScreen ? "assets/frames/m/" : "assets/frames/d/", n: 101, w: narrowScreen ? 720 : 1280, h: narrowScreen ? 400 : 710 };
+  var frames = [], framesStarted = false, drawnIdx = -1, haveT = 0;
+  if (clip) { clip.width = FR.w; clip.height = FR.h; }
+  addEventListener("load", function () { setTimeout(function () { loadFrames(); }, 3500); });
+  function pad3(i) { return (i < 10 ? "00" : i < 100 ? "0" : "") + i; }
+  function drawFrame(i) {
+    if (!ctx2d) return;
+    var j = i, k = 0;
+    /* nearest loaded frame, so a half-loaded sequence still scrubs */
+    while (!frames[j] && k < 12) { k++; j = k % 2 ? i - ((k + 1) >> 1) : i + (k >> 1); }
+    if (!frames[j] || j === drawnIdx) return;
+    ctx2d.drawImage(frames[j], 0, 0, FR.w, FR.h);
+    drawnIdx = j;
   }
+  function loadFrame(i, then) {
+    var im = new Image();
+    im.decoding = "async";
+    im.onload = function () { frames[i] = im; if (then) then(i); };
+    im.src = FR.dir + pad3(i + 1) + ".webp";
+  }
+  function loadFrames() {
+    if (framesStarted) return;
+    framesStarted = true;
+    for (var i = 1; i < FR.n; i++) loadFrame(i, function (i) { if (drawnIdx < 0 || Math.abs(i - drawnIdx) <= 1) drawFrame(Math.max(0, drawnIdx)); });
+  }
+  if (clip) loadFrame(0, function () { drawFrame(0); });
 
   /* the camera: photograph and pin share one world, so the pin cannot drift */
   var cam = document.getElementById("cam"), world = document.getElementById("world");
@@ -550,23 +494,26 @@
     var W = camEl.clientWidth, H = camEl.clientHeight;
     if (memo.W === W && memo.H === H && !memo.dirty) return memo;
     var navB = navEl ? navEl.getBoundingClientRect().bottom : 84;
-    /* under reduced motion the camera box is its own small stage, so the
-       frame simply fills it */
     document.documentElement.style.setProperty("--navB", navB.toFixed(1) + "px");
-    /* the copy leads, under the nav. the frame takes the room beneath it. */
-    var top = reduce ? 0 : (beatsEl ? beatsEl.offsetTop + beatsEl.offsetHeight + 18 : H * 0.34);
+    /* the copy leads, under the nav, and the frame hangs directly from it:
+       its top edge is tucked a little under the words (data-shift, a share
+       of its height that is feather or sky anyway), so word and picture read
+       as one thing. On a phone the photo and the globe are cut closer
+       (data-over) so they fill the width instead of sitting small. */
+    var shift = +(camEl.getAttribute("data-shift") || 0), over = +(camEl.getAttribute("data-over") || 1);
+    var narrow = W < 760;
+    var top = reduce ? 0 : (beatsEl ? beatsEl.offsetTop + beatsEl.offsetHeight + 10 : H * 0.34);
     var bottom = reduce ? H : H - 28;
-    var gutter = Math.max(20, W * 0.04);
+    var gutter = narrow ? 0 : Math.max(20, W * 0.04);
     var ar = 16 / 9, safeW = W - 2 * gutter, safeH = Math.max(bottom - top, 120);
-    /* the frame may run a little past the foot of the viewport: that part is
-       feather and road. what matters is framed inside the safe area itself. */
-    var ih = Math.min(safeH * (reduce ? 1 : 1.12), safeW / ar), iw = ih * ar;
-    var ox = (W - iw) / 2, oy = top + Math.max(0, (safeH - ih) / 2);
+    var ih = Math.min(safeH * (reduce ? 1 : 1.12), (narrow ? over : 1) * safeW / ar), iw = ih * ar;
+    var ox = (W - iw) / 2, oy = reduce ? top + (safeH - ih) / 2 : top - shift * ih;
     worldEl.style.left = ox + "px"; worldEl.style.top = oy + "px";
     worldEl.style.width = iw + "px"; worldEl.style.height = ih + "px";
     camEl.style.setProperty("--safe-t", top.toFixed(1) + "px");
     camEl.style.setProperty("--safe-b", (H - bottom).toFixed(1) + "px");
-    memo.W = W; memo.H = H; memo.iw = iw; memo.ih = ih; memo.ox = ox; memo.oy = oy;
+    camEl.style.setProperty("--flat", Math.round(Math.min(safeH * 0.88, 520, W * 0.62)) + "px");
+    memo.W = W; memo.H = H; memo.iw = iw; memo.ih = ih; memo.ox = ox; memo.oy = oy; memo.top = top;
     memo.cx = W / 2; memo.cy = top + safeH / 2; memo.safeH = safeH; memo.dirty = false;
     memo.stamp = ++fitStamp;
     return memo;
@@ -577,7 +524,7 @@
   addEventListener("load", refit);
   if (document.fonts && document.fonts.ready) document.fonts.ready.then(refit);
 
-  var camStamp = -1, ZMAX = 40;
+  var camStamp = -1, ZMAX = 40, FCX = 0, FCY = 0;
   function setVar(el, name, v) { if (el.__v !== v) { el.style.setProperty(name, v); el.__v = v; } }
 
   function progressOf(el) {
@@ -613,8 +560,10 @@
       var L = fitWorld(cam, world, camBeats, camMemo);
       /* the close-up is the flat mark's own size, so one becomes the other in place */
       if (L.stamp !== camStamp && flatSvg) {
-        var fr = flatSvg.getBoundingClientRect(), fw = Math.min(fr.width, fr.height);
+        var fr = flatSvg.getBoundingClientRect(), cr = cam.getBoundingClientRect(), fw = Math.min(fr.width, fr.height);
         ZMAX = Math.max(8, fw * 0.92 / (PINW * L.iw));
+        /* the pin close-up sits exactly where the flat mark sits */
+        FCX = fr.left + fr.width / 2 - cr.left; FCY = fr.top + fr.height / 2 - cr.top;
         camStamp = L.stamp;
       }
 
@@ -626,8 +575,8 @@
       /* 2. the camera holds close, pulls back, holds wide */
       var k = smooth(clamp01((p - 0.24) / 0.58));
       var Z = lerp(ZMAX, 1, k);
-      var tx = lerp(L.cx - L.ox - ZMAX * LX * L.iw, 0, k);
-      var ty = lerp(L.cy - L.oy - ZMAX * LY * L.ih, 0, k);
+      var tx = lerp(FCX - L.ox - ZMAX * LX * L.iw, 0, k);
+      var ty = lerp(FCY - L.oy - ZMAX * LY * L.ih, 0, k);
       world.style.transform = "translate(" + tx.toFixed(1) + "px," + ty.toFixed(1) + "px) scale(" + Z.toFixed(3) + ")";
       if (photoEl) photoEl.style.filter = "blur(" + (lerp(0.5, 0, smooth(clamp01(k / 0.4)))).toFixed(3) + "px)";
       /* the viewport feather carries the close-up and eases off as the frame
@@ -686,9 +635,11 @@
   /* ------------------------------- the signal, then the loss of it */
   var lcam = document.getElementById("lcam"), lworld = document.getElementById("lworld"), lightEl = document.getElementById("light");
   var lBeats = lcam && lcam.parentNode.querySelector(".beats");
-  var lP = 0, lStamp = -1, LZ = 3.6, lAX = 0, lAY = 0;
+  var lP = 0, lStamp = -1, LZ = 3.6, lAX = 0, lAY = 0, lH = 1;
   function lightScene() {
     if (!lcam || !lworld || !lightEl) return;
+    /* the rest of the frames load as the scene comes within reach */
+    if (!framesStarted && clipScene.getBoundingClientRect().top < innerHeight * 2.5) loadFrames();
     var raw = progressOf(clipScene);
     lP = reduce ? raw : lerp(lP, raw, 0.14);
     var p = lP, L = fitWorld(lcam, lworld, lBeats, lMemo), s = lightEl.style;
@@ -699,6 +650,7 @@
       lAY = lightEl.offsetTop + lightEl.offsetHeight * 0.493;
       var lh = Math.max(1, lightEl.offsetHeight), lw = Math.max(1, lightEl.offsetWidth);
       LZ = Math.min(L.safeH * 0.92 / lh, L.H * 0.62 / lh, (L.W - 40) * 0.86 / lw);
+      lH = lh;
       lStamp = L.stamp;
     }
 
@@ -712,7 +664,8 @@
     if (!reduce) {
       var k = smooth(clamp01((p - 0.08) / 0.30));
       var Z = lerp(LZ, 1, k);
-      var tx = lerp(L.cx - L.ox - LZ * lAX, 0, k), ty = lerp(L.cy - L.oy - LZ * lAY, 0, k);
+      /* close, the light hangs right under the words */
+      var tx = lerp(L.cx - L.ox - LZ * lAX, 0, k), ty = lerp(L.top + 16 + LZ * lH / 2 - L.oy - LZ * lAY, 0, k);
       lworld.style.transform = "translate(" + tx.toFixed(1) + "px," + ty.toFixed(1) + "px) scale(" + Z.toFixed(3) + ")";
       if (clip) clip.style.filter = "blur(" + (lerp(0.45, 0, smooth(clamp01(k / 0.5)))).toFixed(3) + "px)";
       setVar(lcam, "--vig", lerp(1, 0.35, k).toFixed(3));
@@ -721,11 +674,11 @@
     /* then the signal is taken away */
     s.opacity = (1 - smooth(clamp01((p - 0.40) / 0.08))).toFixed(3);
 
-    /* and the cars go. the clip reaches closest approach and holds there. */
-    if (clip && clipReady && clip.duration) {
-      var want = clamp01((p - 0.46) / 0.34) * (clip.duration - 0.05);
+    /* and the cars go. the last frame is the closest approach, and it holds. */
+    if (clip) {
+      var want = clamp01((p - 0.46) / 0.34);
       haveT = reduce ? want : lerp(haveT, want, 0.18);
-      if (Math.abs(haveT - clip.currentTime) > 0.012 && !clip.seeking) { try { clip.currentTime = haveT; } catch (e) {} }
+      drawFrame(Math.round(haveT * (FR.n - 1)));
     }
     /* the one word that changes under the reader */
     clipScene.style.setProperty("--sw", smooth(clamp01((p - 0.625) / 0.028)).toFixed(3));
@@ -781,20 +734,6 @@
     show(0);
   })();
 
-  /* the close performs the practice rather than linking away */
-  var btn = document.getElementById("keep"), box = document.getElementById("practice");
-  if (btn && box) {
-    btn.addEventListener("click", function () {
-      box.hidden = false;
-      btn.setAttribute("aria-expanded", "true");
-      btn.disabled = true;
-      var ic = btn.querySelector(".cta__i"); if (ic) ic.remove();
-      btn.firstChild.textContent = "Pause. Reflect. Retry.";
-      box.querySelectorAll(".pstep").forEach(function (s, i) {
-        setTimeout(function () { s.classList.add("on"); }, reduce ? 0 : i * 520);
-      });
-    });
-  }
 })();
 </script>
 </body>

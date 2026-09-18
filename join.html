@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Join the waitlist · FUN</title>
+<meta name="description" content="Join the waitlist for the FUN starter package.">
+<meta name="robots" content="noindex,nofollow">
+<link rel="canonical" href="https://whyfun.org/join">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="site.css">
+<style>
+  .join { min-height:100dvh; display:grid; place-items:center; padding:120px 20px 60px; }
+  .join .h1 { font-size:clamp(2.6rem, 1rem + 4.6vw, 5.4rem); }
+  .join .lede { margin:22px auto 0; max-width:38ch; }
+  .form { margin:38px auto 0; max-width:440px; display:grid; gap:16px; text-align:left; }
+  .form label { display:grid; gap:7px; font:600 10.5px/1 var(--sans); letter-spacing:.2em; text-transform:uppercase; color:var(--soft); }
+  .form input {
+    font:500 16px/1.3 var(--sans); color:var(--ink); background:#fff; width:100%;
+    border:1px solid rgba(23,19,16,.14); border-radius:14px; padding:15px 16px; outline:none;
+    transition:border-color .2s var(--ease), box-shadow .2s var(--ease);
+  }
+  .form input:focus { border-color:var(--orange); box-shadow:0 0 0 4px rgba(255,107,0,.14); }
+  .form input[aria-invalid="true"] { border-color:var(--red); }
+  .form .act { margin-top:6px; display:flex; justify-content:center; }
+  .form .cta { border:0; cursor:pointer; }
+  .form__note { margin:4px 0 0; font:500 13px/1.6 var(--sans); color:var(--soft); text-align:center; }
+  .form__note a { color:var(--soft); text-underline-offset:4px; }
+  .form__msg { margin:0; min-height:1.6em; text-align:center; font:500 15px/1.6 var(--sans); color:var(--orange-ink); }
+  .done { display:none; }
+  .done.on { display:block; }
+  .done .h2 { font-size:clamp(2rem, 1rem + 2.6vw, 3.4rem); }
+  .form.off { display:none; }
+  .join .eyebrow { justify-content:center; }
+  @media (prefers-reduced-motion:reduce){ .form input { transition:none; } }
+</style>
+</head>
+<body>
+<div class="grain"></div>
+<nav class="nav">
+  <a class="brand fade" style="--d:.15s" href="index.html" aria-label="FUN home">
+    <svg viewBox="0 0 1080 400" role="img" aria-label="FUN">
+      <path fill="#171310" d="M25 0 H257 C271 0 282 11 282 25 V66 C282 80 271 91 257 91 H115 C108 91 103 96 103 103 V126 C103 133 108 138 115 138 H220 C234 138 244 149 244 163 V210 C244 224 234 235 220 235 H115 C108 235 103 240 103 247 V375 C103 389 92 400 78 400 H25 C11 400 0 389 0 375 V25 C0 11 11 0 25 0 Z"/>
+      <circle cx="403" cy="53" r="53" fill="#FF6B00"/><circle cx="615" cy="53" r="53" fill="#FF6B00"/>
+      <path fill="#FF6B00" d="M375 165 C361 165 350 176 350 190 V218 C350 311 421 386 509 386 C597 386 668 311 668 218 V190 C668 176 657 165 643 165 H588 C574 165 563 176 563 190 V218 C563 251 539 279 509 279 C479 279 456 251 456 218 V190 C456 176 445 165 431 165 Z"/>
+      <path fill="#171310" d="M767 0 H818 C828 0 836 4 842 13 L980 204 V25 C980 11 991 0 1005 0 H1055 C1069 0 1080 11 1080 25 V375 C1080 389 1069 400 1055 400 H1005 C995 400 987 396 981 387 L842 195 V375 C842 389 831 400 817 400 H767 C753 400 742 389 742 375 V25 C742 11 753 0 767 0 Z"/>
+    </svg>
+  </a>
+  <span class="navlinks fade" style="--d:.2s">
+    <a href="index.html#pressure">How it works</a><a href="index.html#signals">The signals</a><a href="index.html#stories">Stories</a><a href="index.html#try">Try it</a>
+  </span>
+  <span class="navend fade" style="--d:.25s">
+    <a class="cta" href="#join">Carry the signal <span class="cta__i" aria-hidden="true">↗</span></a>
+  </span>
+</nav>
+
+<main class="join" id="join">
+  <div class="narrow center">
+    <p class="eyebrow">Starter package</p>
+    <h1 class="h1">Join the waitlist.</h1>
+    <p class="lede">The FUN starter package is on its way. Leave your name and we will tell you the moment it is ready.</p>
+
+    <form class="form" id="joinform" novalidate>
+      <label>Name <input name="name" type="text" autocomplete="name" required></label>
+      <label>Email <input name="email" type="email" autocomplete="email" inputmode="email" required></label>
+      <label>Phone <input name="phone" type="tel" autocomplete="tel" inputmode="tel" required></label>
+      <div class="act">
+        <button class="cta cta--lg cta--orange" type="submit">Join the waitlist <span class="cta__i" aria-hidden="true">↗</span></button>
+      </div>
+      <p class="form__note">FUN uses this only to reach you about the starter package. <a href="legal/privacy.html">Privacy</a></p>
+      <p class="form__msg" role="status" aria-live="polite"></p>
+    </form>
+
+    <div class="done" id="done" role="status">
+      <h2 class="h2">You are on the list.</h2>
+      <p class="lede" style="margin-top:18px">We will be in touch when the starter package is ready.</p>
+    </div>
+  </div>
+</main>
+
+<footer class="foot">
+  <p>FUN NGO Inc. · <a href="legal/privacy.html">Privacy</a> · <a href="legal/terms.html">Terms</a> · <a href="legal/accessibility.html">Accessibility</a></p>
+</footer>
+
+<script>
+(function () {
+  /* Where submissions go. Paste the form service endpoint here (Formspree,
+     Web3Forms, Basin, or our own function) and the form is live. Until then
+     it says so, rather than pretending. */
+  var ENDPOINT = "";
+
+  addEventListener("load", function () { requestAnimationFrame(function () { document.body.classList.add("ready"); }); });
+  setTimeout(function () { document.body.classList.add("ready"); }, 900);
+
+  var form = document.getElementById("joinform"), msg = form.querySelector(".form__msg"), done = document.getElementById("done");
+  var fields = ["name", "email", "phone"].map(function (n) { return form.elements[n]; });
+  function valid(el) {
+    var v = el.value.trim(), ok = v.length > 0;
+    if (ok && el.name === "email") ok = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v);
+    if (ok && el.name === "phone") ok = v.replace(/[^0-9]/g, "").length >= 7;
+    el.setAttribute("aria-invalid", ok ? "false" : "true");
+    return ok;
+  }
+  fields.forEach(function (el) { el.addEventListener("input", function () { if (el.getAttribute("aria-invalid") === "true") valid(el); }); });
+
+  form.addEventListener("submit", function (e) {
+    e.preventDefault();
+    var bad = fields.filter(function (el) { return !valid(el); });
+    if (bad.length) { msg.textContent = "Please check the highlighted field" + (bad.length > 1 ? "s." : "."); bad[0].focus(); return; }
+    if (!ENDPOINT) { msg.textContent = "This form is not connected yet."; return; }
+    var btn = form.querySelector("button"); btn.disabled = true; msg.textContent = "Sending…";
+    fetch(ENDPOINT, { method: "POST", headers: { Accept: "application/json" }, body: new FormData(form) })
+      .then(function (r) { if (!r.ok) throw new Error(r.status); form.classList.add("off"); done.classList.add("on"); })
+      .catch(function () { btn.disabled = false; msg.textContent = "That did not go through. Please try again."; });
+  });
+})();
+</script>
+</body>
+</html>

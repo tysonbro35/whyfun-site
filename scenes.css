@@ -232,7 +232,7 @@
   position:absolute; inset:0; pointer-events:none;
   background:
     radial-gradient(ellipse 70% 70% at 50% 50%, transparent 50%, rgba(253,251,247,.35) 72%, rgba(253,251,247,.7) 100%),
-    linear-gradient(to bottom, var(--cream) 0%, rgba(253,251,247,.85) 5%, rgba(253,251,247,.4) 12%, transparent 22%),
+    linear-gradient(to bottom, var(--cream) 0%, rgba(253,251,247,.85) 3%, rgba(253,251,247,.4) 7%, transparent 13%),
     linear-gradient(to top,    var(--cream) 0%, rgba(253,251,247,.85) 8%, rgba(253,251,247,.4) 17%, transparent 30%),
     linear-gradient(to right,  var(--cream) 0%, rgba(253,251,247,.85) 5%, rgba(253,251,247,.4) 12%, transparent 22%),
     linear-gradient(to left,   var(--cream) 0%, rgba(253,251,247,.85) 5%, rgba(253,251,247,.4) 12%, transparent 22%);
@@ -250,10 +250,17 @@
 /* the flat mark lives in the same safe area as the frame, so it is never
    under the copy and the pin can take its place exactly */
 .scene--full .cam__flat {
-  z-index:4; display:flex; align-items:center; justify-content:center;
-  inset:var(--safe-t,90px) 0 var(--safe-b,300px) 0;
+  z-index:4; display:flex; align-items:flex-start; justify-content:center;
+  inset:var(--safe-t,90px) 0 var(--safe-b,300px) 0; padding-top:6px;
 }
-.scene--full .cam__flat svg { height:min(88%,520px); width:auto; max-width:min(60%,520px); }
+.scene--full .cam__flat svg { width:var(--flat,360px); height:var(--flat,360px); }
+/* a phone crops the frame at the viewport's sides, so those sides go to fog */
+@media (max-width:760px){
+  .scene--full .cam {
+    -webkit-mask-image:linear-gradient(to right, transparent 0, #000 7%, #000 93%, transparent 100%);
+            mask-image:linear-gradient(to right, transparent 0, #000 7%, #000 93%, transparent 100%);
+  }
+}
 /* the copy leads: it sits just under the nav and the picture takes the room below */
 .scene--full .beats { position:absolute; left:0; right:0; top:calc(var(--navB,89px) + clamp(12px,3vh,30px)); z-index:6; padding:0 20px; }
 .scene--full .scene__rail { z-index:7; }
@@ -264,7 +271,7 @@
 
 /* =========================================== the signal over the intersection */
 .cam__clip { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; display:block; }
-.light { position:absolute; left:50%; top:-1.5%; width:11.5%; transform:translateX(-50%); }
+.light { position:absolute; left:50%; top:4%; width:11.5%; transform:translateX(-50%); }
 .light img { display:block; width:100%; height:auto; }
 /* three real states of the same light, registered to one frame. green is the
    base; amber and red are laid over it in turn, so the housing never thins */
@@ -321,3 +328,7 @@
   #map .cam__world { animation:none; }
   #map .globe { transform:none !important; }
 }
+
+/* the copy zone is as tall as the tallest beat. a one-line beat sits at the
+   bottom of it, on the picture, rather than leaving a hole above the frame */
+.scene--full .beats > .beat { align-self:end; }
