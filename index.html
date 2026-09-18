@@ -1,0 +1,801 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>FUN · Life's hard. People bump. FUN helps.</title>
+<meta name="description" content="FUN is a small symbol for the moment things get hard. Pause. Reflect. Retry.">
+<meta name="robots" content="noindex,nofollow">
+<meta name="twitter:card" content="summary_large_image">
+<meta property="og:image:height" content="630">
+<meta property="og:image:width" content="1200">
+<meta property="og:image" content="https://whyfun.org/assets/og.jpg">
+<meta property="og:url" content="https://whyfun.org/">
+<meta property="og:description" content="FUN is a small symbol for the moment things get hard. Pause. Reflect. Retry.">
+<meta property="og:title" content="Life&#39;s hard. People bump. FUN helps.">
+<meta property="og:site_name" content="FUN">
+<meta property="og:type" content="website">
+<link rel="canonical" href="https://whyfun.org/">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap">
+<style>
+  :root {
+    --cream:#FDFBF7;
+    --ink:#171310;
+    --soft:#6F6459;
+    --hair:rgba(23,19,16,.10);
+    --orange:#FF6B00;
+    --orange-type:#E15E00;
+    --orange-ink:#8A3900;
+    --red:#DD1E33; --gold:#FFC928; --blue:#1F74DD;
+    --serif:"Instrument Serif", Georgia, serif;
+    --sans:"Plus Jakarta Sans", system-ui, sans-serif;
+    --ease:cubic-bezier(0.32,0.72,0,1);
+  }
+  * { box-sizing:border-box; }
+  html,body { margin:0; }
+  body { background:var(--cream); color:var(--ink); font-family:var(--sans); -webkit-font-smoothing:antialiased; }
+  ::selection { background:rgba(255,107,0,.2); }
+
+  .grain {
+    position:fixed; inset:0; z-index:60; pointer-events:none; opacity:.03;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+
+  h1,h2,h3 { margin:0; font-family:var(--serif); font-weight:400; letter-spacing:-.02em; line-height:1.02; }
+  .h2 { font-size:clamp(2.3rem, 0.9rem + 3.8vw, 5rem); }
+  p { margin:0; }
+  .lede { font-size:clamp(1.05rem, 0.95rem + 0.45vw, 1.4rem); line-height:1.58; color:var(--soft); }
+  .wrap { width:min(1240px, calc(100% - 40px)); margin-inline:auto; }
+  .narrow { width:min(760px, calc(100% - 40px)); margin-inline:auto; }
+  .center { text-align:center; }
+
+  .eyebrow {
+    position:relative; z-index:8;
+    display:flex; align-items:center; justify-content:center; gap:20px;
+    font:600 10.5px/1 var(--sans); letter-spacing:.24em; text-transform:uppercase; color:var(--soft);
+  }
+  .eyebrow::before, .eyebrow::after {
+    content:""; height:1px; width:clamp(40px, 7vw, 110px);
+    background:linear-gradient(to right, transparent, var(--hair), transparent);
+  }
+
+  .cta {
+    display:inline-flex; align-items:center; gap:13px;
+    background:var(--ink); color:#fff; text-decoration:none;
+    font:600 14px/1 var(--sans); padding:7px 7px 7px 21px; border-radius:999px;
+    transition:transform .3s var(--ease), box-shadow .3s var(--ease);
+    box-shadow:0 1px 2px rgba(23,19,16,.14), 0 14px 30px -16px rgba(23,19,16,.55);
+    border:0; cursor:pointer;
+  }
+  .cta__i {
+    width:31px; height:31px; border-radius:999px; background:rgba(255,255,255,.15);
+    display:grid; place-items:center; font-size:12px; line-height:1;
+    transition:transform .3s var(--ease), background .3s var(--ease);
+  }
+  .cta:hover { transform:translateY(-1px); }
+  .cta:hover .cta__i { transform:translate(2px,-2px) scale(1.06); background:rgba(255,255,255,.24); }
+  .cta:active { transform:scale(.985); }
+  .cta:focus-visible { outline:3px solid var(--orange-ink); outline-offset:3px; }
+  .cta--orange { background:var(--orange); box-shadow:0 1px 2px rgba(150,64,0,.2), 0 18px 36px -16px rgba(255,107,0,.66); }
+  .cta--lg { font-size:15.5px; padding:9px 9px 9px 27px; }
+  .cta--lg .cta__i { width:38px; height:38px; font-size:13px; }
+
+  .nav {
+    position:fixed; z-index:50; top:0; left:0; right:0;
+    display:grid; grid-template-columns:1fr auto 1fr; align-items:center;
+    padding:22px clamp(20px, 3.6vw, 54px);
+    background:linear-gradient(to bottom, var(--cream) 42%, rgba(253,251,247,0));
+  }
+  .brand { display:flex; align-items:center; justify-self:start; text-decoration:none; }
+  .brand svg { height:24px; width:auto; display:block; }
+  .navlinks { display:flex; align-items:center; gap:clamp(20px, 2.6vw, 38px); justify-self:center; }
+  .navlinks a { font:500 14.5px/1 var(--sans); color:var(--soft); text-decoration:none; transition:color .2s var(--ease); }
+  .navlinks a:hover { color:var(--ink); }
+  .navend { justify-self:end; }
+  @media (max-width:900px){ .navlinks { display:none; } }
+
+  /* -------------------------------------------------------------- hero */
+  .hero { position:relative; min-height:100dvh; display:grid; place-items:center; overflow:hidden; padding:88px 20px 40px; }
+  .hero .wrap { text-align:center; }
+  .stage { position:relative; margin-top:-86px; }
+  .photo { position:relative; width:min(1120px,100%); margin-inline:auto; }
+  .photo::before {
+    content:""; position:absolute; inset:-46% -34%;
+    background:radial-gradient(76% 88% at 50% 48%, #fff 80%, rgba(255,255,255,.5) 92%, rgba(255,255,255,0) 100%);
+    pointer-events:none;
+  }
+  .photo img { position:relative; display:block; width:100%; height:auto; }
+  .head { position:relative; z-index:6; margin-top:-17%; }
+  .l1 { display:block; font-size:clamp(2.6rem, 0.4rem + 5.6vw, 6.2rem); }
+  .l2 { display:block; font-size:clamp(2.9rem, 0.4rem + 6.3vw, 7rem); margin-top:.02em; }
+  .l2 b { font-family:var(--sans); font-weight:700; font-style:normal; letter-spacing:-.045em; color:var(--orange-type); }
+  .l2 em { font-style:italic; color:var(--orange-type); }
+  .sub { margin:24px auto 0; max-width:46ch; font-size:clamp(1rem, 0.9rem + 0.3vw, 1.2rem); line-height:1.6; color:var(--soft); }
+  .act { margin-top:26px; display:flex; justify-content:center; }
+  .signals { display:flex; align-items:center; justify-content:center; gap:8px; margin-top:22px; }
+  .signals i { width:8px; height:8px; border-radius:50%; display:block; }
+  .signals span { font:500 10.5px/1 var(--sans); letter-spacing:.18em; text-transform:uppercase; color:var(--soft); margin-left:7px; }
+  @media (max-width:760px){ .head { margin-top:-10%; } .stage { margin-top:-40px; } }
+
+  /* ------------------------------------------------------------- close */
+  .closing { padding:clamp(90px,14vh,170px) 20px clamp(40px,6vh,70px); text-align:center; }
+  .practice { margin-top:44px; display:grid; gap:16px; justify-items:center; }
+  .practice[hidden] { display:none; }
+  .pstep { display:flex; align-items:center; gap:16px; text-align:left; max-width:30rem; opacity:0; transform:translateY(10px); transition:opacity .6s var(--ease), transform .6s var(--ease); }
+  .pstep.on { opacity:1; transform:none; }
+  .pstep i { width:20px; height:20px; border-radius:50%; flex:none; display:block; }
+  .pstep b { font-family:var(--serif); font-weight:400; font-size:1.25rem; }
+  .pstep span { color:var(--soft); }
+  .foot { padding:56px 0 72px; text-align:center; font:500 13.5px/1.6 var(--sans); color:var(--soft); }
+  .foot a { color:var(--soft); text-underline-offset:4px; }
+  .foot a:hover { color:var(--ink); }
+
+  .bezel { padding:10px; border-radius:30px; background:rgba(23,19,16,.035); box-shadow:inset 0 0 0 1px rgba(23,19,16,.06); }
+  .bezel__in {
+    border-radius:21px; overflow:hidden; position:relative; background:#fff;
+    box-shadow:0 1px 2px rgba(60,40,20,.06), 0 30px 60px -30px rgba(60,40,20,.34), inset 0 1px 0 rgba(255,255,255,.7);
+  }
+  .bezel__in img, .bezel__in video { display:block; width:100%; height:auto; }
+
+  /* hero entrance */
+  .rv { display:inline-block; overflow:hidden; vertical-align:bottom; padding-bottom:.16em; margin-bottom:-.16em; }
+  .rv > span { display:inline-block; transform:translateY(112%); opacity:0; filter:blur(7px); }
+  .ready .rv > span {
+    transform:none; opacity:1; filter:blur(0);
+    transition:transform .95s var(--ease), opacity .8s var(--ease), filter .8s var(--ease);
+    transition-delay:var(--d,0s);
+  }
+  .fade { opacity:0; transform:translateY(18px); filter:blur(9px); }
+  .ready .fade {
+    opacity:1; transform:none; filter:blur(0);
+    transition:opacity .9s var(--ease), transform .9s var(--ease), filter .9s var(--ease);
+    transition-delay:var(--d,0s);
+  }
+  .hero .photo img { opacity:0; transform:scale(1.035); filter:blur(14px); }
+  .ready .hero .photo img {
+    opacity:1; transform:none; filter:blur(0);
+    transition:opacity 1.5s var(--ease), transform 1.8s var(--ease), filter 1.4s var(--ease);
+    transition-delay:.05s;
+  }
+  @media (prefers-reduced-motion:reduce){
+    .rv > span, .fade, .hero .photo img { opacity:1 !important; transform:none !important; filter:none !important; transition:none !important; }
+  }
+</style>
+<link rel="stylesheet" href="scenes.css">
+</head>
+<body>
+<div class="grain"></div>
+<!-- the flat umbrella, drawn once and used wherever the mark appears -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="umbSym" viewBox="0 0 600 600">
+      <path d="M300 298V506C300 536 280 557 252 557C221 557 200 534 200 505V493" fill="none" stroke="#171310" stroke-width="54" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M270 62V42C270 25.4 283.4 12 300 12C316.6 12 330 25.4 330 42V62Z" fill="#171310"/>
+      <path d="M20 334C23 186 143 71 300 58C230 76 186 181 182 334C139 294 62 294 20 334Z" fill="#DD1E33"/>
+      <path d="M300 58C230 76 186 181 182 334C236 289 364 289 418 334C414 181 370 76 300 58Z" fill="#FFC928"/>
+      <path d="M300 58C370 76 414 181 418 334C461 294 538 294 580 334C577 186 457 71 300 58Z" fill="#1F74DD"/>
+      <path d="M20 334C23 186 143 71 300 58C457 71 577 186 580 334C538 294 461 294 418 334C364 289 236 289 182 334C139 294 62 294 20 334Z" fill="none" stroke="#171310" stroke-width="18" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M300 58C230 76 186 181 182 334" fill="none" stroke="#171310" stroke-width="16" stroke-linecap="round"/>
+      <path d="M300 58C370 76 414 181 418 334" fill="none" stroke="#171310" stroke-width="16" stroke-linecap="round"/>
+    </symbol>
+  </defs>
+</svg>
+
+<nav class="nav">
+  <a class="brand fade" style="--d:.15s" href="#top" aria-label="FUN home">
+    <svg viewBox="0 0 1080 400" role="img" aria-label="FUN">
+      <path fill="#171310" d="M25 0 H257 C271 0 282 11 282 25 V66 C282 80 271 91 257 91 H115 C108 91 103 96 103 103 V126 C103 133 108 138 115 138 H220 C234 138 244 149 244 163 V210 C244 224 234 235 220 235 H115 C108 235 103 240 103 247 V375 C103 389 92 400 78 400 H25 C11 400 0 389 0 375 V25 C0 11 11 0 25 0 Z"/>
+      <circle cx="403" cy="53" r="53" fill="#FF6B00"/><circle cx="615" cy="53" r="53" fill="#FF6B00"/>
+      <path fill="#FF6B00" d="M375 165 C361 165 350 176 350 190 V218 C350 311 421 386 509 386 C597 386 668 311 668 218 V190 C668 176 657 165 643 165 H588 C574 165 563 176 563 190 V218 C563 251 539 279 509 279 C479 279 456 251 456 218 V190 C456 176 445 165 431 165 Z"/>
+      <path fill="#171310" d="M767 0 H818 C828 0 836 4 842 13 L980 204 V25 C980 11 991 0 1005 0 H1055 C1069 0 1080 11 1080 25 V375 C1080 389 1069 400 1055 400 H1005 C995 400 987 396 981 387 L842 195 V375 C842 389 831 400 817 400 H767 C753 400 742 389 742 375 V25 C742 11 753 0 767 0 Z"/>
+    </svg>
+  </a>
+  <span class="navlinks fade" style="--d:.2s">
+    <a href="#pressure">How it works</a><a href="#signals">The signals</a><a href="#stories">Stories</a><a href="#try">Try it</a>
+  </span>
+  <span class="navend fade" style="--d:.25s">
+    <a class="cta" href="#carry">Carry the signal <span class="cta__i" aria-hidden="true">↗</span></a>
+  </span>
+</nav>
+
+<!-- ========================================================== HERO -->
+<section class="hero" id="top">
+  <div class="wrap">
+    <p class="eyebrow fade" style="--d:.35s">Signals of shared humanity</p>
+    <div class="stage">
+      <figure class="photo">
+        <img src="assets/hero-wide.webp" width="1920" height="1080"
+             alt="Darren Nielson laughing with two guests at FUNFest 2025.">
+      </figure>
+      <div class="head">
+        <h1>
+          <span class="l1">
+            <span class="rv" style="--d:.65s"><span>Life's hard.</span></span>
+            <span class="rv" style="--d:.95s"><span>People bump.</span></span>
+          </span>
+          <span class="l2"><span class="rv" style="--d:1.3s"><span><b>FUN</b> <em>helps.</em></span></span></span>
+        </h1>
+        <p class="sub fade" style="--d:1.75s">Simple tools for staying human when things get hard.</p>
+        <div class="act fade" style="--d:1.95s">
+          <a class="cta cta--lg cta--orange" href="#carry">Carry the signal <span class="cta__i" aria-hidden="true">↗</span></a>
+        </div>
+        <div class="signals fade" style="--d:2.15s">
+          <i style="background:var(--red)"></i><i style="background:var(--gold)"></i><i style="background:var(--blue)"></i>
+          <span>Pause · Reflect · Retry</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======================================================== NAMING -->
+<section class="scene" data-scene data-len="340" id="mark">
+  <div class="scene__pin"><div class="scene__inner">
+    <div class="wm">
+      <svg viewBox="0 0 1080 400" role="img" aria-label="FUN">
+        <defs>
+          <clipPath id="wmSmile"><rect class="wm-shutter" x="346" width="326"/></clipPath>
+        </defs>
+        <path class="wm-f" fill="#171310" d="M25 0 H257 C271 0 282 11 282 25 V66 C282 80 271 91 257 91 H115 C108 91 103 96 103 103 V126 C103 133 108 138 115 138 H220 C234 138 244 149 244 163 V210 C244 224 234 235 220 235 H115 C108 235 103 240 103 247 V375 C103 389 92 400 78 400 H25 C11 400 0 389 0 375 V25 C0 11 11 0 25 0 Z"/>
+        <circle class="wm-dot" cx="403" cy="53" r="53" fill="#FF6B00"/>
+        <circle class="wm-dot" cx="615" cy="53" r="53" fill="#FF6B00"/>
+        <path class="wm-smile" clip-path="url(#wmSmile)" fill="#FF6B00" d="M375 165 C361 165 350 176 350 190 V218 C350 311 421 386 509 386 C597 386 668 311 668 218 V190 C668 176 657 165 643 165 H588 C574 165 563 176 563 190 V218 C563 251 539 279 509 279 C479 279 456 251 456 218 V190 C456 176 445 165 431 165 Z"/>
+        <path class="wm-n" fill="#171310" d="M767 0 H818 C828 0 836 4 842 13 L980 204 V25 C980 11 991 0 1005 0 H1055 C1069 0 1080 11 1080 25 V375 C1080 389 1069 400 1055 400 H1005 C995 400 987 396 981 387 L842 195 V375 C842 389 831 400 817 400 H767 C753 400 742 389 742 375 V25 C742 11 753 0 767 0 Z"/>
+      </svg>
+    </div>
+    <div class="beats" style="margin-top:38px">
+      <div class="beat" data-beat=".56 1.01">
+        <p class="wm-line">is a symbol to help you stay yourself<br>when things get hard.</p>
+      </div>
+    </div>
+    <div class="scene__rail"><i></i></div>
+  </div></div>
+</section>
+
+
+
+<!-- ====================================================== PRESSURE -->
+
+
+<section class="scene scene--full" data-scene data-len="640" id="pressure">
+  <div class="scene__pin"><div class="scene__inner">
+    <div class="cam" id="lcam">
+      <div class="cam__world" id="lworld">
+        <video class="cam__clip" id="clip" muted playsinline preload="auto" width="1920" height="1080"
+               aria-label="Two cars approaching the same intersection with no signal between them."></video>
+        <div class="cam__fade" aria-hidden="true"></div>
+        <!-- the traffic light, cut out of its own sky and hung over the
+             intersection. it is the signal the scene is about to lose. -->
+        <div class="light" id="light" aria-hidden="true">
+          <img class="ls ls--g" src="assets/light-g.webp" width="900" height="912" alt="">
+          <img class="ls ls--y" src="assets/light-y.webp" width="900" height="912" alt="">
+          <img class="ls ls--r" src="assets/light-r.webp" width="900" height="912" alt="">
+        </div>
+      </div>
+    </div>
+    <div class="beats">
+      <div class="beat" data-beat="0 .14"><p class="h2">You already know<br>what these mean.</p></div>
+      <div class="beat" data-beat=".14 .30"><p class="h2">Nobody argues with a red light.</p></div>
+      <div class="beat" data-beat=".30 .46"><p class="h2">Now take the signal away.</p></div>
+      <div class="beat" data-beat=".46 .58"><p class="h2">Cars aren't the only thing<br>that crashes.</p></div>
+      <div class="beat" data-beat=".58 .68"><p class="h2">So do our <span class="swap"><span class="swap__a">words.</span><span class="swap__b">actions.</span></span></p></div>
+      <div class="beat" data-beat=".68 .80"><p class="h2">A red light doesn't stop<br>a car from crashing.</p></div>
+      <div class="beat" data-beat=".80 .90"><p class="h2">It helps a person<br>choose to stop.</p></div>
+      <div class="beat" data-beat=".90 1.01"><p class="h2">What if people had<br>a signal like that too?</p></div>
+    </div>
+    <div class="scene__rail"><i></i></div>
+  </div></div>
+</section>
+
+<!-- ====================================== THE TURN: camera pull-back -->
+<section class="scene scene--full" data-scene data-len="520" id="turn">
+  <div class="scene__pin"><div class="scene__inner">
+    <div class="cam" id="cam">
+      <div class="cam__world" id="world">
+        <img class="cam__photo" src="assets/hero-clean.webp" width="1920" height="1080"
+             alt="Darren Nielson laughing with two guests at FUNFest.">
+        <div class="cam__fade" aria-hidden="true"></div>
+        <!-- the real pin, placed where it sits on the lapel. the photograph
+             carries no pin of its own, so this is the only one in the scene -->
+        <img class="cam__pin" id="pin" src="assets/pin.webp" alt="">
+      </div>
+      <!-- the flat brand mark. it holds first, then becomes the object above. -->
+      <div class="cam__flat" id="flat" aria-hidden="true">
+        <svg viewBox="0 0 600 600">
+          <path d="M300 298V506C300 536 280 557 252 557C221 557 200 534 200 505V493" fill="none" stroke="#171310" stroke-width="54" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M270 62V42C270 25.4 283.4 12 300 12C316.6 12 330 25.4 330 42V62Z" fill="#171310"/>
+          <path d="M20 334C23 186 143 71 300 58C230 76 186 181 182 334C139 294 62 294 20 334Z" fill="#DD1E33"/>
+          <path d="M300 58C230 76 186 181 182 334C236 289 364 289 418 334C414 181 370 76 300 58Z" fill="#FFC928"/>
+          <path d="M300 58C370 76 414 181 418 334C461 294 538 294 580 334C577 186 457 71 300 58Z" fill="#1F74DD"/>
+          <path d="M20 334C23 186 143 71 300 58C457 71 577 186 580 334C538 294 461 294 418 334C364 289 236 289 182 334C139 294 62 294 20 334Z" fill="none" stroke="#171310" stroke-width="18" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M300 58C230 76 186 181 182 334" fill="none" stroke="#171310" stroke-width="16" stroke-linecap="round"/>
+          <path d="M300 58C370 76 414 181 418 334" fill="none" stroke="#171310" stroke-width="16" stroke-linecap="round"/>
+        </svg>
+      </div>
+    </div>
+    <div class="beats" style="margin-top:34px">
+      <div class="beat" data-beat="0 .2"><p class="h2">This is FUN's signal.</p></div>
+      <div class="beat" data-beat=".2 .42"><p class="h2">Small enough to wear.</p></div>
+      <div class="beat" data-beat=".42 .72"><p class="h2">Pause. Reflect. Retry.</p></div>
+      <div class="beat" data-beat=".72 1.01"><p class="h2">It does not have to<br>go that way.</p></div>
+    </div>
+    <div class="scene__rail"><i></i></div>
+  </div></div>
+</section>
+
+<!-- ======================================================= SIGNALS -->
+<section class="scene" data-scene data-len="260" id="signals">
+  <div class="scene__pin"><div class="scene__inner">
+    <div class="marks">
+      <div class="mark3" data-mark="0">
+        <!-- the real smile from the wordmark, framed on its own -->
+        <svg viewBox="340 -12 340 412" aria-hidden="true">
+          <circle cx="403" cy="53" r="53" fill="#FF6B00"/><circle cx="615" cy="53" r="53" fill="#FF6B00"/>
+          <path fill="#FF6B00" d="M375 165 C361 165 350 176 350 190 V218 C350 311 421 386 509 386 C597 386 668 311 668 218 V190 C668 176 657 165 643 165 H588 C574 165 563 176 563 190 V218 C563 251 539 279 509 279 C479 279 456 251 456 218 V190 C456 176 445 165 431 165 Z"/>
+        </svg>
+        <b>Remember.</b>
+      </div>
+      <div class="mark3" data-mark="1">
+        <svg viewBox="0 0 340 100" aria-hidden="true">
+          <circle cx="50" cy="50" r="50" fill="#DD1E33"/><circle cx="170" cy="50" r="50" fill="#FFC928"/><circle cx="290" cy="50" r="50" fill="#1F74DD"/>
+        </svg>
+        <b>Reassure.</b>
+      </div>
+      <div class="mark3" data-mark="2">
+        <svg viewBox="0 0 600 600" aria-hidden="true"><use href="#umbSym"/></svg>
+        <b>Represent.</b>
+      </div>
+    </div>
+    <div class="scene__rail"><i></i></div>
+  </div></div>
+</section>
+
+<!-- ======================================================= STORIES -->
+<section class="scene" data-scene data-len="460" id="stories">
+  <div class="scene__pin"><div class="scene__inner">
+    <div class="beats">
+      <div class="beat" data-beat="0 .12">
+        <p class="kicker">Follow a signal</p>
+        <h2 class="h2">Find a story.</h2>
+        <p class="lede" style="margin-top:26px">These are real people at a real FUNFest. Every one of them had a hard week too.</p>
+      </div>
+      <figure class="beat shot" data-beat=".12 .245"><div class="bezel"><div class="bezel__in"><img src="assets/story-1.webp" width="960" height="720" alt="A hotel ballroom filling with families at round tables."></div></div><figcaption>The room fills. FUNFest 2025.</figcaption></figure>
+      <figure class="beat shot" data-beat=".245 .37"><div class="bezel"><div class="bezel__in"><img src="assets/story-2.webp" width="960" height="720" alt="A speaker on stage with a microphone in front of a Mission Possible banner."></div></div><figcaption>Someone names the idea out loud.</figcaption></figure>
+      <figure class="beat shot" data-beat=".37 .495"><div class="bezel"><div class="bezel__in"><img src="assets/story-3.webp" width="960" height="720" alt="A young woman in a cap smiling at the camera under blue stage light."></div></div><figcaption>It lands on a person.</figcaption></figure>
+      <figure class="beat shot" data-beat=".495 .62"><div class="bezel"><div class="bezel__in"><img src="assets/story-4.webp" width="960" height="720" alt="Two men laughing together mid conversation."></div></div><figcaption>Two people, one joke.</figcaption></figure>
+      <figure class="beat shot" data-beat=".62 .745"><div class="bezel"><div class="bezel__in"><img src="assets/story-5.webp" width="960" height="720" alt="Two people bumping fists and smiling in front of a FUN Armigos banner."></div></div><figcaption>A bump that goes the other way.</figcaption></figure>
+      <figure class="beat shot" data-beat=".745 .87"><div class="bezel"><div class="bezel__in"><img src="assets/story-6.webp" width="960" height="720" alt="A teenager grinning while holding up a boxed watch he has just been given."></div></div><figcaption>A watch, won, and shown off immediately.</figcaption></figure>
+      <figure class="beat shot" data-beat=".87 1.01"><div class="bezel"><div class="bezel__in"><img src="assets/story-7.webp" width="960" height="720" alt="The ballroom stage and banner seen from the back of the room."></div></div><figcaption>The same room, later.</figcaption></figure>
+    </div>
+    <div class="scene__rail"><i></i></div>
+  </div></div>
+</section>
+
+<!-- ================================== THE STILL BEAT: no motion at all -->
+<section class="still" id="serious">
+  <div class="narrow">
+    <p class="still__line">Not every bump is small.</p>
+    <p class="still__line">Some hurt. Some need real help,<br>not just a signal.</p>
+  </div>
+</section>
+
+<!-- ====================================== WARMTH RETURNS: the row moves -->
+<section class="scene" data-scene data-len="300" id="glad">
+  <div class="scene__pin">
+    <div class="gladline"><p class="h2">I'm glad that I<br>bumped into you.</p></div>
+    <div class="gladrail" id="gladrail">
+      <img src="assets/story-4.webp" width="960" height="720" alt="Two men laughing together mid conversation.">
+      <img src="assets/story-5.webp" width="960" height="720" alt="Two people bumping fists and smiling.">
+      <img src="assets/story-6.webp" width="960" height="720" alt="A teenager grinning while holding up a boxed watch.">
+      <img src="assets/story-3.webp" width="960" height="720" alt="A young woman in a cap smiling at the camera.">
+      <img src="assets/story-1.webp" width="960" height="720" alt="A ballroom filling with families at round tables.">
+    </div>
+    <div class="scene__rail"><i></i></div>
+  </div>
+</section>
+
+<!-- ============================================= THE MAP: a drawn vision -->
+<section class="scene scene--full" data-scene data-len="400" id="map">
+  <div class="scene__pin"><div class="scene__inner">
+    <div class="cam" id="mcam">
+      <div class="cam__world" id="mworld">
+        <div class="globe">
+          <picture>
+            <source media="(max-width:760px)" srcset="assets/globe-m.webp">
+            <img src="assets/globe.webp" width="2000" height="1111"
+                 alt="A globe turned to the United States, with small umbrella marks appearing across the country, each sending out one ring.">
+          </picture>
+          <svg class="mapmarks" viewBox="0 0 2736 1520" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><g class="map-pins"></g></svg>
+        </div>
+        <div class="cam__fade" aria-hidden="true"></div>
+      </div>
+    </div>
+    <div class="beats">
+      <div class="beat" data-beat="0 .3"><p class="h2">Imagine this.</p></div>
+      <div class="beat" data-beat=".3 1.01"><p class="h2">Everywhere pressure<br>shows up.</p></div>
+    </div>
+    <div class="scene__rail"><i></i></div>
+  </div></div>
+</section>
+
+<!-- ================================== THE ASK: three questions, answered -->
+<section class="band ask" id="try">
+  <div class="narrow center">
+    <p class="eyebrow">Try it once</p>
+    <h2 class="h2" style="margin-top:26px">Think of a bump<br>you had this week.</h2>
+    <p class="lede" style="margin:26px auto 0;max-width:40ch">Nothing is saved. Nothing is sent. This is just for you.</p>
+
+    <form class="qform" id="qform" novalidate>
+      <div class="q" data-q="0">
+        <span class="q__dot" style="background:var(--red)"></span>
+        <label for="q1">What pressure did I feel?</label>
+        <textarea id="q1" rows="2" placeholder="Rushed. Embarrassed. Not listened to."></textarea>
+        <button class="cta q__next" type="button">Next <span class="cta__i" aria-hidden="true">↓</span></button>
+      </div>
+      <div class="q" data-q="1">
+        <span class="q__dot" style="background:var(--gold)"></span>
+        <label for="q2">What might I be missing about them?</label>
+        <textarea id="q2" rows="2" placeholder="Maybe they were carrying something too."></textarea>
+        <button class="cta q__next" type="button">Next <span class="cta__i" aria-hidden="true">↓</span></button>
+      </div>
+      <div class="q" data-q="2">
+        <span class="q__dot" style="background:var(--blue)"></span>
+        <label for="q3">What can I try next?</label>
+        <textarea id="q3" rows="2" placeholder="Ask one more question before I answer."></textarea>
+        <button class="cta q__next" type="button">Done <span class="cta__i" aria-hidden="true">✓</span></button>
+      </div>
+      <div class="q q--done" data-q="3">
+        <div class="qdone">
+          <span class="qdots"><i style="background:var(--red)"></i><i style="background:var(--gold)"></i><i style="background:var(--blue)"></i></span>
+          <p class="h2" style="font-size:clamp(1.7rem, 1rem + 1.8vw, 2.8rem)">That was it.<br>Pause. Reflect. Retry.</p>
+          <p class="lede" style="margin-top:20px">You just did the whole thing. It takes about a minute, and it works in a hallway.</p>
+        </div>
+      </div>
+    </form>
+  </div>
+</section>
+
+<!-- ==================================================== ASPIRATION -->
+<section class="scene" data-scene data-len="220" id="hope">
+  <div class="scene__pin"><div class="scene__inner">
+    <div class="beats">
+      <div class="beat" data-beat="0 .36"><h2 class="h2">Not a movement.</h2></div>
+      <div class="beat" data-beat=".36 .68"><p class="h2">Just more people<br>who know.</p></div>
+      <div class="beat" data-beat=".68 1.01"><p class="lede" style="font-size:clamp(1.15rem, 1rem + .7vw, 1.7rem)">More people who know what the umbrella means, so that when things get hard, somebody in the room has a word for it.</p></div>
+    </div>
+    <div class="scene__rail"><i></i></div>
+  </div></div>
+</section>
+
+<!-- ========================================================= CARRY -->
+<section class="closing" id="carry">
+  <div class="narrow">
+    <svg class="closepin" viewBox="0 0 600 600" role="img" aria-label="The FUN umbrella."><use href="#umbSym"/></svg>
+    <p class="eyebrow">Carry the signal</p>
+    <h2 class="h2" style="margin-top:26px">Wear it, draw it,<br>or just remember it.</h2>
+    <p class="lede" style="margin:26px auto 0; max-width:42ch">It does not prove anything about you. It only says what you intend.</p>
+    <div class="act" style="margin-top:36px">
+      <button class="cta cta--lg cta--orange" type="button" id="keep" aria-controls="practice" aria-expanded="false">Carry the signal <span class="cta__i" aria-hidden="true">↗</span></button>
+    </div>
+    <p class="quietlink"><a href="#" id="donate">or support FUN directly</a></p>
+    <div class="practice" id="practice" hidden>
+      <div class="pstep"><i style="background:var(--red)"></i><span><b>Pause.</b> One breath, before you answer.</span></div>
+      <div class="pstep"><i style="background:var(--gold)"></i><span><b>Reflect.</b> What else could this mean?</span></div>
+      <div class="pstep"><i style="background:var(--blue)"></i><span><b>Retry.</b> Say it again, better.</span></div>
+    </div>
+  </div>
+  <footer class="foot">
+    <p>FUN NGO Inc. · <a href="legal/privacy.html">Privacy</a> · <a href="legal/terms.html">Terms</a> · <a href="legal/accessibility.html">Accessibility</a></p>
+  </footer>
+</section>
+
+<script>
+(function () {
+  var reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var clamp01 = function (v) { return v < 0 ? 0 : v > 1 ? 1 : v; };
+  var smooth  = function (t) { return t * t * (3 - 2 * t); };
+  var lerp    = function (a, b, t) { return a + (b - a) * t; };
+
+  /* hero entrance */
+  addEventListener("load", function () { requestAnimationFrame(function () { document.body.classList.add("ready"); }); });
+  setTimeout(function () { document.body.classList.add("ready"); }, 900);
+
+  /* give every scene its height from data-len, so pacing is authored in one place */
+  var scenes = [].slice.call(document.querySelectorAll("[data-scene]")).map(function (el) {
+    if (!reduce) el.style.height = (el.getAttribute("data-len") || 300) + "vh";
+    return {
+      el: el,
+      rail: el.querySelector(".scene__rail i"),
+      beats: [].slice.call(el.querySelectorAll(".beat")).map(function (b) {
+        var a = b.getAttribute("data-beat").split(" ");
+        return { el: b, from: parseFloat(a[0]), to: parseFloat(a[1]) };
+      })
+    };
+  });
+
+  /* the pressure clip is scrubbed by its own scene */
+  var clip = document.getElementById("clip");
+  var clipScene = document.getElementById("pressure");
+  var clipReady = false, haveT = 0;
+  if (clip) {
+    clip.src = matchMedia("(max-width: 760px)").matches ? "assets/pressure-m.mp4" : "assets/pressure.mp4";
+    clip.addEventListener("loadedmetadata", function () { clipReady = true; try { clip.currentTime = 0.001; } catch (e) {} });
+  }
+
+  /* the camera: photograph and pin share one world, so the pin cannot drift */
+  var cam = document.getElementById("cam"), world = document.getElementById("world");
+  var pinEl = document.getElementById("pin"), flatEl = document.getElementById("flat");
+  var flatSvg = flatEl && flatEl.querySelector("svg");
+  var photoEl = cam && cam.querySelector(".cam__photo");
+  var camBeats = cam && cam.parentNode.querySelector(".beats");
+  var navEl = document.querySelector(".nav");
+  /* decode the camera images at load so the first scroll into the scene is
+     not also paying for a 1920x1080 decode on the scroll path */
+  [photoEl, pinEl, document.querySelector("#map .globe img")].forEach(function (im) { if (im && im.decode) im.decode().catch(function () {}); });
+  /* where the pin sits on the lapel, measured from the frame that had it baked
+     in. the photograph used here is the same frame without it. */
+  var LX = 0.7170, LY = 0.4815, PINW = 0.0080;
+  var camP = 0;
+
+  /* The frame is fitted inside the safe area: under the nav, above the copy,
+     inside a small gutter. Nothing that matters can be cropped on any window,
+     and the frame's own feather takes it into the page. The safe area's
+     centre comes back with it: every close-up is aimed there. Re-fitted only
+     when the window or the copy changes size. */
+  var fitStamp = 0;
+  function fitWorld(camEl, worldEl, beatsEl, memo) {
+    var W = camEl.clientWidth, H = camEl.clientHeight;
+    if (memo.W === W && memo.H === H && !memo.dirty) return memo;
+    var navB = navEl ? navEl.getBoundingClientRect().bottom : 84;
+    /* under reduced motion the camera box is its own small stage, so the
+       frame simply fills it */
+    document.documentElement.style.setProperty("--navB", navB.toFixed(1) + "px");
+    /* the copy leads, under the nav. the frame takes the room beneath it. */
+    var top = reduce ? 0 : (beatsEl ? beatsEl.offsetTop + beatsEl.offsetHeight + 18 : H * 0.34);
+    var bottom = reduce ? H : H - 28;
+    var gutter = Math.max(20, W * 0.04);
+    var ar = 16 / 9, safeW = W - 2 * gutter, safeH = Math.max(bottom - top, 120);
+    /* the frame may run a little past the foot of the viewport: that part is
+       feather and road. what matters is framed inside the safe area itself. */
+    var ih = Math.min(safeH * (reduce ? 1 : 1.12), safeW / ar), iw = ih * ar;
+    var ox = (W - iw) / 2, oy = top + Math.max(0, (safeH - ih) / 2);
+    worldEl.style.left = ox + "px"; worldEl.style.top = oy + "px";
+    worldEl.style.width = iw + "px"; worldEl.style.height = ih + "px";
+    camEl.style.setProperty("--safe-t", top.toFixed(1) + "px");
+    camEl.style.setProperty("--safe-b", (H - bottom).toFixed(1) + "px");
+    memo.W = W; memo.H = H; memo.iw = iw; memo.ih = ih; memo.ox = ox; memo.oy = oy;
+    memo.cx = W / 2; memo.cy = top + safeH / 2; memo.safeH = safeH; memo.dirty = false;
+    memo.stamp = ++fitStamp;
+    return memo;
+  }
+  var camMemo = { W: 0, H: 0, dirty: true }, lMemo = { W: 0, H: 0, dirty: true }, mMemo = { W: 0, H: 0, dirty: true };
+  function refit() { camMemo.dirty = true; lMemo.dirty = true; mMemo.dirty = true; }
+  addEventListener("resize", refit);
+  addEventListener("load", refit);
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(refit);
+
+  var camStamp = -1, ZMAX = 40;
+  function setVar(el, name, v) { if (el.__v !== v) { el.style.setProperty(name, v); el.__v = v; } }
+
+  function progressOf(el) {
+    var r = el.getBoundingClientRect();
+    var travel = r.height - innerHeight;
+    return travel > 0 ? clamp01(-r.top / travel) : (r.top < 0 ? 1 : 0);
+  }
+
+  function frame() {
+    for (var i = 0; i < scenes.length; i++) {
+      var s = scenes[i];
+      var r = s.el.getBoundingClientRect();
+      if (r.bottom < -200 || r.top > innerHeight + 200) continue;
+      var p = progressOf(s.el);
+      s.el.style.setProperty("--p", p.toFixed(4));
+      if (s.rail) s.rail.style.transform = "scaleX(" + p.toFixed(4) + ")";
+      for (var j = 0; j < s.beats.length; j++) {
+        var b = s.beats[j];
+        var on = p >= b.from && p < b.to;
+        b.el.classList.toggle("on", on);
+        b.el.classList.toggle("past", !on && p >= b.to);
+      }
+    }
+
+    if (world && cam && reduce) {
+      fitWorld(cam, world, camBeats, camMemo);
+    } else if (world && cam) {
+      var rawP = progressOf(document.getElementById("turn"));
+      /* the camera is eased toward the scroll position rather than snapped to
+         it, so a wheel notch becomes a glide instead of a jump */
+      camP = lerp(camP, rawP, 0.14);
+      var p = camP;
+      var L = fitWorld(cam, world, camBeats, camMemo);
+      /* the close-up is the flat mark's own size, so one becomes the other in place */
+      if (L.stamp !== camStamp && flatSvg) {
+        var fr = flatSvg.getBoundingClientRect(), fw = Math.min(fr.width, fr.height);
+        ZMAX = Math.max(8, fw * 0.92 / (PINW * L.iw));
+        camStamp = L.stamp;
+      }
+
+      /* 1. the flat mark holds, then becomes the object */
+      var becomes = smooth(clamp01((p - 0.13) / 0.11));
+      if (flatEl)  flatEl.style.opacity = (1 - becomes).toFixed(3);
+      if (photoEl) photoEl.style.opacity = becomes.toFixed(3);
+
+      /* 2. the camera holds close, pulls back, holds wide */
+      var k = smooth(clamp01((p - 0.24) / 0.58));
+      var Z = lerp(ZMAX, 1, k);
+      var tx = lerp(L.cx - L.ox - ZMAX * LX * L.iw, 0, k);
+      var ty = lerp(L.cy - L.oy - ZMAX * LY * L.ih, 0, k);
+      world.style.transform = "translate(" + tx.toFixed(1) + "px," + ty.toFixed(1) + "px) scale(" + Z.toFixed(3) + ")";
+      if (photoEl) photoEl.style.filter = "blur(" + (lerp(0.5, 0, smooth(clamp01(k / 0.4)))).toFixed(3) + "px)";
+      /* the viewport feather carries the close-up and eases off as the frame
+         takes over its own edges */
+      setVar(cam, "--vig", lerp(1, 0.35, k).toFixed(3));
+
+      /* 3. the pin is the camera's own, all the way out */
+      if (pinEl) pinEl.style.opacity = becomes.toFixed(3);
+      /* 4. on the way out the whole frame eases back and aside, making room */
+      var drift = smooth(clamp01((p - 0.90) / 0.10));
+      var driftT = drift > 0 ? "translateX(" + (-6 * drift).toFixed(2) + "%) scale(" + (1 - 0.10 * drift).toFixed(3) + ")" : "";
+      if (driftT !== cam.__lastT) { cam.style.transform = driftT; cam.__lastT = driftT; }
+    }
+
+    sceneExtras();
+
+    lightScene();
+    requestAnimationFrame(frame);
+  }
+  requestAnimationFrame(frame);
+
+  /* ---------------------------------------------- the wordmark assembles */
+  var markScene = document.getElementById("mark");
+  var pressScene = document.getElementById("pressure");
+  var gladRail = document.getElementById("gladrail");
+  var gladScene = document.getElementById("glad");
+
+  /* the map's marks are drawn once, then lit one at a time */
+  var mapG = document.querySelector(".map-pins");
+  var mapPins = [];
+  if (mapG) {
+    /* placed on the globe render's own pixels (2736x1520), scattered on
+       purpose so the reveal does not sweep across in one direction */
+    var spots = [[1380,640],[1088,500],[1530,720],[1220,760],[1450,580],[1150,630],[1605,670],[1305,600],[1095,750],[1480,830],[1300,510],[1450,760],[1090,670],[1370,550],[1225,680],[1592,612],[1280,790],[1140,550],[1530,630],[1390,810],[1215,500],[1450,670],[1085,580],[1550,810],[1370,730],[1150,720],[1305,690],[1540,870],[1230,600]];
+    var NS = "http://www.w3.org/2000/svg", XL = "http://www.w3.org/1999/xlink";
+    spots.forEach(function (s) {
+      var place = document.createElementNS(NS, "g");
+      place.setAttribute("transform", "translate(" + s[0] + "," + s[1] + ")");
+      var g = document.createElementNS(NS, "g");
+      g.setAttribute("class", "map-pin");
+      var ring = document.createElementNS(NS, "circle");
+      ring.setAttribute("class", "map-ring"); ring.setAttribute("r", "40");
+      var u = document.createElementNS(NS, "use");
+      u.setAttribute("href", "#umbSym"); u.setAttributeNS(XL, "xlink:href", "#umbSym");
+      u.setAttribute("x", "-34"); u.setAttribute("y", "-34"); u.setAttribute("width", "68"); u.setAttribute("height", "68");
+      g.appendChild(ring); g.appendChild(u);
+      place.appendChild(g); mapG.appendChild(place); mapPins.push(g);
+    });
+  }
+  var mapScene = document.getElementById("map");
+  var mcam = document.getElementById("mcam"), mworld = document.getElementById("mworld");
+  var mBeats = mcam && mcam.parentNode.querySelector(".beats");
+  var markEls = [].slice.call(document.querySelectorAll(".mark3"));
+  var markScene3 = document.getElementById("signals");
+
+  /* ------------------------------- the signal, then the loss of it */
+  var lcam = document.getElementById("lcam"), lworld = document.getElementById("lworld"), lightEl = document.getElementById("light");
+  var lBeats = lcam && lcam.parentNode.querySelector(".beats");
+  var lP = 0, lStamp = -1, LZ = 3.6, lAX = 0, lAY = 0;
+  function lightScene() {
+    if (!lcam || !lworld || !lightEl) return;
+    var raw = progressOf(clipScene);
+    lP = reduce ? raw : lerp(lP, raw, 0.14);
+    var p = lP, L = fitWorld(lcam, lworld, lBeats, lMemo), s = lightEl.style;
+    /* the close-up frames the whole light inside the safe area, whatever the
+       window's shape, so no lamp is ever off the top */
+    if (L.stamp !== lStamp) {
+      lAX = lightEl.offsetLeft + lightEl.offsetWidth * 0.478;
+      lAY = lightEl.offsetTop + lightEl.offsetHeight * 0.493;
+      var lh = Math.max(1, lightEl.offsetHeight), lw = Math.max(1, lightEl.offsetWidth);
+      LZ = Math.min(L.safeH * 0.92 / lh, L.H * 0.62 / lh, (L.W - 40) * 0.86 / lw);
+      lStamp = L.stamp;
+    }
+
+    /* the light runs green, then amber, then red, as the camera pulls out */
+    var toY = smooth(clamp01((p - 0.12) / 0.05)), toR = smooth(clamp01((p - 0.25) / 0.05));
+    /* amber lays over green, red lays over both: each state is a full image */
+    s.setProperty("--ly", toY.toFixed(3));
+    s.setProperty("--lr", toR.toFixed(3));
+
+    /* camera: close on the lamps, out to the whole intersection */
+    if (!reduce) {
+      var k = smooth(clamp01((p - 0.08) / 0.30));
+      var Z = lerp(LZ, 1, k);
+      var tx = lerp(L.cx - L.ox - LZ * lAX, 0, k), ty = lerp(L.cy - L.oy - LZ * lAY, 0, k);
+      lworld.style.transform = "translate(" + tx.toFixed(1) + "px," + ty.toFixed(1) + "px) scale(" + Z.toFixed(3) + ")";
+      if (clip) clip.style.filter = "blur(" + (lerp(0.45, 0, smooth(clamp01(k / 0.5)))).toFixed(3) + "px)";
+      setVar(lcam, "--vig", lerp(1, 0.35, k).toFixed(3));
+    }
+
+    /* then the signal is taken away */
+    s.opacity = (1 - smooth(clamp01((p - 0.40) / 0.08))).toFixed(3);
+
+    /* and the cars go. the clip reaches closest approach and holds there. */
+    if (clip && clipReady && clip.duration) {
+      var want = clamp01((p - 0.46) / 0.34) * (clip.duration - 0.05);
+      haveT = reduce ? want : lerp(haveT, want, 0.18);
+      if (Math.abs(haveT - clip.currentTime) > 0.012 && !clip.seeking) { try { clip.currentTime = haveT; } catch (e) {} }
+    }
+    /* the one word that changes under the reader */
+    clipScene.style.setProperty("--sw", smooth(clamp01((p - 0.625) / 0.028)).toFixed(3));
+  }
+
+  function sceneExtras() {
+    if (markScene) {
+      var p = progressOf(markScene), s = markScene.style;
+      s.setProperty("--d1", smooth(clamp01((p - 0.06) / 0.12)).toFixed(3));
+      s.setProperty("--d2", smooth(clamp01((p - 0.16) / 0.22)).toFixed(3));
+      s.setProperty("--d3", smooth(clamp01((p - 0.34) / 0.20)).toFixed(3));
+    }
+    if (markScene3 && markEls.length) {
+      var mp = progressOf(markScene3);
+      markEls.forEach(function (el, i) { el.classList.toggle("on", mp > 0.12 + i * 0.2); });
+    }
+    if (gladRail && gladScene && !reduce) {
+      var gp = progressOf(gladScene);
+      var over = gladRail.scrollWidth - innerWidth;
+      if (over > 0) gladRail.style.transform = "translateX(" + (-over * gp).toFixed(1) + "px)";
+    }
+    if (mcam && mworld) fitWorld(mcam, mworld, mBeats, mMemo);
+    if (mapScene && mapPins.length) {
+      var mp0 = progressOf(mapScene);
+      /* the page pulls back like a camera lifting, then the marks come */
+      mapScene.style.setProperty("--lift", smooth(clamp01(mp0 / 0.28)).toFixed(3));
+      var kp = clamp01((mp0 - 0.24) / 0.62);
+      var lit = Math.round(kp * mapPins.length);
+      for (var i = 0; i < mapPins.length; i++) mapPins[i].classList.toggle("on", i < lit);
+    }
+  }
+
+  /* the three questions, answered in place. nothing leaves the browser. */
+  (function () {
+    var form = document.getElementById("qform");
+    if (!form) return;
+    var qs = [].slice.call(form.querySelectorAll(".q"));
+    var at = 0;
+    function show(i) {
+      at = i;
+      qs.forEach(function (q, n) { q.classList.toggle("on", n === i); });
+      var ta = qs[i].querySelector("textarea");
+      if (ta) setTimeout(function () { ta.focus({ preventScroll: true }); }, 380);
+    }
+    qs.forEach(function (q) {
+      var next = q.querySelector(".q__next");
+      if (next) next.addEventListener("click", function () { show(Math.min(at + 1, qs.length - 1)); });
+      var ta = q.querySelector("textarea");
+      if (ta) ta.addEventListener("keydown", function (e) {
+        if (e.key === "Enter" && (e.metaKey || e.ctrlKey)) { e.preventDefault(); show(Math.min(at + 1, qs.length - 1)); }
+      });
+    });
+    show(0);
+  })();
+
+  /* the close performs the practice rather than linking away */
+  var btn = document.getElementById("keep"), box = document.getElementById("practice");
+  if (btn && box) {
+    btn.addEventListener("click", function () {
+      box.hidden = false;
+      btn.setAttribute("aria-expanded", "true");
+      btn.disabled = true;
+      var ic = btn.querySelector(".cta__i"); if (ic) ic.remove();
+      btn.firstChild.textContent = "Pause. Reflect. Retry.";
+      box.querySelectorAll(".pstep").forEach(function (s, i) {
+        setTimeout(function () { s.classList.add("on"); }, reduce ? 0 : i * 520);
+      });
+    });
+  }
+})();
+</script>
+</body>
+</html>

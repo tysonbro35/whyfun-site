@@ -1,0 +1,18 @@
+# working files that never ship
+lab/
+out/
+*.mjs
+index-v1.html
+hero-d.html
+hero-e.html
+heroes.html
+BRIEF.md
+GAPS.md
+scrollcraft.css
+scrollcraft.js
+
+# secrets and OS noise
+.env
+.env.*
+Thumbs.db
+.DS_Store
